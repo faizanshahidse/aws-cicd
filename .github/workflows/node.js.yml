@@ -30,8 +30,14 @@ jobs:
     - name: Environment veriable
       env:
         AWS_REGION: ${{secrets.AWS_REGION}}
+        AWS_TEST: ${{secrets.AWS_TEST}}
       run: |
-        echo "AWS_REGION"
+        if [ -z "$AWS_REGION" ]; then
+          echo "AWS_REGION is NOT set"
+          exit 1
+        else
+          echo "AWS_REGION is set"
+        fi
     - run: npm ci
     - run: npm run build --if-present
     - run: npm start
