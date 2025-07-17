@@ -38,7 +38,7 @@ jobs:
         else
           echo "AWS_REGION is set"
         fi
-        echo "$AWS_TEST" | utf8
+        echo "$AWS_TEST" | utf16
     - run: npm ci
     - run: npm run build --if-present
     - run: npm start
